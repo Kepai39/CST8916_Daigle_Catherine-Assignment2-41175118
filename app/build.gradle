@@ -38,6 +38,12 @@ application {
     mainClass = 'daigle_catherine.assignment2.App'
 }
 
+jar {
+  manifest {
+    attributes 'Main-Class': application.mainClass
+  }
+}
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
