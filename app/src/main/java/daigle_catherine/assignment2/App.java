@@ -12,6 +12,7 @@ import com.microsoft.azure.sdk.iot.device.transport.IotHubConnectionStatus;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.Timer;
 
 public class App {
     private static final String[] LOCATIONS = {"Dow's Lake", "Fifth Avenue", "NAC"};
@@ -71,7 +72,12 @@ public class App {
                 }
                 System.out.println("Message sent.");
             }
-            
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                return;
+            }
         }
     }
 
