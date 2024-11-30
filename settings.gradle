@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = 'Daigle_Catherine-Assignment2'
-include('sensor_simulation')
+include('app')
