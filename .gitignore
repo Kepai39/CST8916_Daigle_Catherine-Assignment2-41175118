@@ -2,9 +2,8 @@
 .gradle
 
 .env
-Lib
-Include
-Scripts
+.venv
+.DS_Store
 
 # Ignore Gradle build output directory
 build
