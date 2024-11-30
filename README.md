@@ -21,12 +21,18 @@ The analyzation and processing of this data as well as visualizing the data in a
 
 
 
+
+
 ## Implementation Details:
 
 
 ### IoT Sensor Simulation:
 
 ### Azure IoT Hub Configuration:
+
+Screenshots:
+![Creating IoT Hub](IoTHubScreenshot1.png)
+
 
 
 ### Azure Stream Analytics Job:
