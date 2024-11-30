@@ -27,10 +27,15 @@ The analysis and processing of this data and visualizing the data in an understa
 
 ### Azure IoT Hub Configuration:
 
-Screenshots:
+#### Screenshots:
+
+Creating the IoT hub and resource group, configuring name, region and Free tier (for cost friendly) with 8,000 daily message limit.
 ![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot1.png)
+Configuring Network connectivity to be Public accesss.
 ![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot2.png)
+Default settings, No device update and no windows Defender for IoT
 ![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot3.png)
+Review of the creation of IoT Hub.
 ![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot4.png)
 
 
