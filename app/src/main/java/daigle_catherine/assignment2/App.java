@@ -22,4 +22,37 @@ public class App {
         // TODO set up messages
         // TODO send messages
     }
+
+    /**
+     * Referenced from {@link https://github.com/Azure/azure-iot-sdk-java/blob/main/iothub/device/iot-device-samples/send-receive-module-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceiveModuleSample.java}
+     */
+    protected static class IotHubConnectionStatusChangeCallbackLogger implements IotHubConnectionStatusChangeCallback {
+
+        @Override
+        public void onStatusChanged(ConnectionStatusChangeContext connectionStatusChangeContext) {
+            IotHubConnectionStatus status = connectionStatusChangeContext.getNewStatus();
+            IotHubConnectionStatusChangeReason sChangeReason = connectionStatusChangeContext.getNewStatusReason();
+            Throwable throwable = connectionStatusChangeContext.getCause();
+
+            System.out.println("===== Connection =====");
+            System.out.println("Status update: " + status);
+            System.out.println("Status reason: " + sChangeReason);
+            System.out.println("Status throwable: " + (throwable == null ? "null" : throwable.getMessage()));
+            System.out.println("======================\n");
+
+            if (throwable != null)
+                throwable.printStackTrace();
+            
+            if (status == IotHubConnectionStatus.DISCONNECTED) {
+                System.out.println("Disconnected and not retrying.");
+            } else if (status == IotHubConnectionStatus.DISCONNECTED_RETRYING) {
+                System.out.println("Disconnected and retrying.");
+            } else if (status == IotHubConnectionStatus.CONNECTED) {
+                System.out.println("Connection made.");
+            }
+
+
+        }
+        
+    }
 }
