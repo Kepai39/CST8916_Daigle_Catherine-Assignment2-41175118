@@ -32,6 +32,12 @@ The analyzation and processing of this data as well as visualizing the data in a
 
 Screenshots:
 ![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot1.png)
+![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot2.png)
+![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot3.png)
+![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot4.png)
+
+
+
 
 
 
