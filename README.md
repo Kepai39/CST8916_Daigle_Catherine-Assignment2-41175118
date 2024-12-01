@@ -200,7 +200,12 @@ When we finally started the batch job to process the "data that indicates sub-pa
 In the end, it was a valuable experience with practical lessons to be learned.
 
 
-## Resources
+## Resources:
+
+**NOte: move this to references**
 
 - Avirup Basu. [Creating a sensor simulator to interact with IoT Hub, Video Tutorial, YouTube](https://www.youtube.com/watch?v=JEffAb_3DlE)
 - Vidiv Academy. [Azure IoT Hub with Stream Analytics, Video Tutorial, Youtube](https://www.youtube.com/watch?v=oxD6nEAUXuA)
+
+
+## References:
