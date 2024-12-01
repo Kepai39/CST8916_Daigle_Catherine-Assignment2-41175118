@@ -149,6 +149,8 @@ After 10 seconds, the stream jobs output a JSON file to the jsonstorage containe
 
 ## Results:
 
+Stream Analytics Recieving Simulated messages:
+![Simulated messages](./screenshots/StreamAnalyzeOverviewMessaging.png)
 
 Confirming that the data has been proccessed into an array format as JSON:
 ![Creating Storage Account](./screenshots/TheArrayFormatofJsonFileOutput.png)
