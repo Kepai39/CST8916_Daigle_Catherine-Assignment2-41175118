@@ -25,13 +25,17 @@ The analysis and processing of this data and visualizing the data in an understa
 
 ### IoT Sensor Simulation:
 
-![Sensor Simulation Output Screencap 1](screenshots/sensor-simulation1.png)
+![Sensor Simulation Output Screencap 1](./screenshots/sensor-simulation1.png)
 
-The main flow of the above app is in the `main` method. There is a `while` loop set to true, so that it continues to run indefinitely. Inside that loop is an array of locations. For each location in one iteration of the `while` loop, numbers are generated for our json variables. The json and an index number is sent to the `endToIotHub()`, which handles sending of the data to the endpoints specified in the below:
+The main flow of the above app is in the `main` method. There is a `while` loop set to true, so that it continues to run indefinitely. Inside that loop is an array of locations. For each location in one iteration of the `while` loop, numbers are generated for our json variables. The json and an index number is sent to the `sendToIotHub()` method, which handles sending of the data to the endpoints specified in the below:
 
 ![Sensor Simulation Endpoints](./screenshots/sensor-simulation2.png)
 
-This .env file is part of a virtual environment where we define our environment variables.
+This .env file is part of a virtual environment where we define our environment variables. See the below screenshot for where we define our array with connection strings, and how we use the passed `data` and index (`conn`) to send the message.
+
+![Sensor Simulation Code 1](./screenshots/sensor-simulation3.png)
+
+This code was referenced/adapted from Avirup Basu, who made a detailed explanation via [YouTube](https://www.youtube.com/watch?v=JEffAb_3DlE) and [GitHub](https://github.com/avirup171/python-iot-hub-sender). What was added was reading frrom environment variables, our json output, and extra loops to handle the different endpoints.
 
 ### Azure IoT Hub Configuration:
 
