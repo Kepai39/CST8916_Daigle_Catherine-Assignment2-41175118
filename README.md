@@ -141,6 +141,10 @@ After 10 seconds, the stream jobs output a JSON file to the jsonstorage containe
 Confirming that the data has been proccessed into an array format as JSON:
 ![Creating Storage Account](./screenshots/TheArrayFormatofJsonFileOutput.png)
 
+After the testing of the IoT devices and the assignment, we deleted our resources 
+![Deletion of resources](./screenshots/DeletionOfResources.png)
+
+
 
 
 
