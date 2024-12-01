@@ -14,8 +14,7 @@ The analysis and processing of this data and visualizing the data in an understa
 
 
 ## System Architecture Diagram:
-
-
+![System architecture Diagram](RTAssignment2ArchitectureDiagram.drawio.png)
 
 
 
@@ -47,15 +46,44 @@ Configuring Network connectivity to be Public accesss.
 ![Creating IoT Hub](./screenshots/IoTHubScreenshot2.png)
 Default settings, No device update and no windows Defender for IoT
 ![Creating IoT Hub](./screenshots/IoTHubScreenshot3.png)
+Default settings, for Management of IoT Hub
+![Creating IoT Hub](./screenshots/IoTHubScreenshot5.png)
 Review of the creation of IoT Hub.
 ![Creating IoT Hub](./screenshots/IoTHubScreenshot4.png)
+IoT Hub Overview.
+![Creating IoT Hub](./screenshots/IoToverview.png)
 
+Creating an IoT hub Device This process is repeated two more times to create a total of three devices, one for each region
+![Creating IoT Hub Device](./screenshots/CreatingIoTdevice.png)
+Result of three IoT devices
+![Creating IoT Hub Device](./screenshots/ListOfIoTDevices.png)
+IoT connection Strings this is later used within the .env file of the IoT simulation code to connect simulated devices to Azure IoT hub. The important connection used is the Primary Connection String.
+![Creating IoT Hub Device](./screenshots/IOTConnectionString.png)
 
 
 
 
 
 ### Azure Stream Analytics Job:
+
+Creating a New stream Analytics Job, We picked 1/3 in streaming units for cost effectiveness
+![Creating Stream Analytics Job](./screenshots/AnalyticsJobBasic.png)
+
+Connecting Stream Analytics Job to the appropriate storage blobstoragecan the creation of the storaage is shown in the Azure Blob Storage Section
+![Creating Stream Analytics Job](./screenshots/CreatingStreamAnalyticsJob.png)
+
+Review of Stream Analytics job Settings
+![Creating Stream Analytics Job](./screenshots/StreamAnalyticsJobReview.png)
+
+Here, the input is created we picked Messeging as the endpoint and JSON our input format since the simulation IoT devices output JSON
+![Creating Stream Analytics Job input](./screenshots/CreatingStreamInput.png)
+Here, the Output is created, Here it is linked to the storage container JSONstorage1, we picked this name originally since it stores JSON file format, but a more accurate name should have been IceWarningLogs, as later that container was used to store logs that the ice was not safe to skate on. The organization format is in array form as it is much easier to parse the information.
+![Creating Stream Analytics Job Output](./screenshots/CreatingStreamOutput.png)
+Result of the Stream output/input creation:
+![Creating Stream Analytics Job Output](./screenshots/StreamOutputResult.png)
+![Creating Stream Analytics Job input](./screenshots/StreamInputResult.png)
+
+
 
 
 Querying Azure Stream Analytics
@@ -71,15 +99,50 @@ This shows us rows full of our sensor data, unfiltered.
 ![Analytics Stream Query](./screenshots/analytics-stream1.png)
 
 
+Changing Analyzation screen query, this query specifies that only Unsafe ice conditions are logged and stored into the container.  unsafe conditions are as follows:  Ice thickness is < 5, Surface Temperature > 0, Snow Accumulation > 3, or External Temperature > 0.
+![Creating Stream Analytics Job Query](./screenshots/AnalyzingStreamSQLQueryWarn.png)
+
 
 
 ### Azure Blob Storage:
+Creating A Storage Account Picking standard azure blob storage account and locally redundant storage:
+![Creating Storage Account](./screenshots/CreatingStorageBasic.png)
+Kept the advanced settings as default:
+![Creating Storage Account](./screenshots/CreatingStorageAdvanced.png)
+Enabled public access to networking, for ease of use and not to encounter networking issues.
+![Creating Storage Account](./screenshots/CreatingStorageNetworking.png)
+Disabled soft delete, as this is a test resource and makes deleting resources afterwards easier
+![Creating Storage Account](./screenshots/CreatingStorageDataProt.png)
+Default Encryption settings
+![Creating Storage Account](./screenshots/CreatingStorageEncryption.png)
+Created Blob Storage container, default settings.
+![Creating Storage Account](./screenshots/container-storage1.png)
+
+
+
+
+
+
 
 
 ## Usage Instructions:
 
 
 ## Results:
+Before retrieving the results I had to create a diagnostic settings to Run the Stream analytics job:
+![Creating Storage Account](./screenshots/AnalyzingStreammOverview.png)
+
+Starting the stream Jobs: 
+![Creating Storage Account](./screenshots/StartingAnalyzationStreamJob.png)
+
+After 10 seconds, the stream jobs output a JSON file to the jsonstorage container
+![Creating Storage Account](./screenshots/StorageJSONFileOutput.png)
+
+Confirming that the data has been proccessed into an array format as JSON:
+![Creating Storage Account](./screenshots/TheArrayFormatofJsonFileOutput.png)
+
+
+
 
 ## Reflection:
 
