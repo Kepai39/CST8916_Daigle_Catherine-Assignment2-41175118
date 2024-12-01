@@ -34,6 +34,8 @@ This .env file is part of a virtual environment where we define our environment 
 
 ![Sensor Simulation Code 1](./screenshots/sensor-simulation3.png)
 
+Each iteration of the loop pauses for 10 seconds after sending the message to IoT Hub. Further development of this program might consider externalizing the sleep/wait time to an environment variable for further configuration.
+
 This code was referenced/adapted from Avirup Basu, who made a detailed explanation via [YouTube](https://www.youtube.com/watch?v=JEffAb_3DlE) and [GitHub](https://github.com/avirup171/python-iot-hub-sender). What was added was reading frrom environment variables, our json output, and extra loops to handle the different endpoints.
 
 ### Azure IoT Hub Configuration:
@@ -127,6 +129,18 @@ Created Blob Storage container, default settings.
 
 ## Usage Instructions:
 
+Follow the following steps to set up and run the simulation for the three IoT devices:
+
+1. In the project root folder, create a `.env` file with the following fields:
+    - `IOTHUB_CONN_STR1`
+    - `IOTHUB_CONN_STR2`
+    - `IOTHUB_CONN_STR3`
+    - Each field should have the IoT Hub connection string from one of three Created Devices in IoT Hub, example: <br> `IOTHUB_CONN_STR1 = "HostName=IoThubs1.azure-devices.net;DeviceId=iotsensor1;SharedAccessKey=<string>"`
+2. Open a terminal and navigate to the project directory. Run: `python -m venv .venv`
+3. `.venv\scripts\activate` to activate the virtual environment (if not already activated), which will have your 3 environment variables from step 1.
+4. `pip install -r requirements.txt` to install the requirements (2).
+5. `py sensor-simulation/sensor.py` to run the program.
+
 
 ## Results:
 Before retrieving the results I had to create a diagnostic settings to Run the Stream analytics job:
@@ -150,3 +164,24 @@ After the testing of the IoT devices and the assignment, we deleted our resource
 
 ## Reflection:
 
+In this assignment we learned a lot about the development process and the specifics about navigating Azure's environment to set up a pipeline from IoT Device (Thing) to Cloud.
+
+There were challenges from the beginning. Our initial approach posed challenges in availability of libraries (Java) and restrictions because of our choice in build automation tools. We were forced to rethink our approach, and ended up going with a language that in retrospect is a lot more suited to development of cloud-interacting applications like the sensor simulation. The resulting simulation code (Python) is so much more lightweight and faster to set up than our original approach with Java. With Java, there was difficulty in navigating the Azure IoT Java SDK as the samples did not come with detailed enough explanations as to how to use its various mechanisms, such as making a connection. Furthermore, our choice in building tool gave us issues that compounded our frustration. Switching to Python, our application code shrunk to 1/4th the size, and importing dependencies was made simple with a `requirements.txt` and `pip` command. Furthermore, there is much more documentation with Python, highlighting the lesson that research into appropriate developing languages is a worthwhile step to cloud development.
+
+More challenges were brought forth when navigating the Azure Portal. The Azure portal is highly structured, but with the abundance of menus and the particular requirements of certain services like Analytics Stream requiring a storage container and diagnostic settings set first, it was clear that we needed guidance as to the order of creation along with the settings.
+
+There are some noteworthy resources available for those who need a step-by-step walkthrough of doing exactly what we did in this assignment. Please see the Resources section if curious.
+
+When we finally started the batch job to process the "data that indicates sub-par skating conditions" and everything moved along smoothly, we reflected on the process and what we would do differently if we were to do this again.
+
+1. **More research into programming languages** and available documentation within the communities/projects.
+2. **Naming conventions are important.** We kept our naming conventions to "function + id number" such as `jsonstorage1`, because its function was to host json data. But this isn't an appropriate naming convention for bigger projects, as it says nothing of its purpose to store specifically *processed* data and warnings about sub-par skating conditions.
+3. **Create the step-by-step setup plan**, including order of creation for services. This may require gathering documentation or video tutorials, but it saves on time when the target service is something never used before.
+
+In the end, it was a valuable experience with practical lessons to be learned.
+
+
+## Resources
+
+- Avirup Basu. [Creating a sensor simulator to interact with IoT Hub, Video Tutorial, YouTube](https://www.youtube.com/watch?v=JEffAb_3DlE)
+- Vidiv Academy. [Azure IoT Hub with Stream Analytics, Video Tutorial, Youtube](https://www.youtube.com/watch?v=oxD6nEAUXuA)
