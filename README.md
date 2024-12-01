@@ -1,6 +1,6 @@
 # Assignment 2
 
-
+Catherine Daigle - 41175118
 
 
 
