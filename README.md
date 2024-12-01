@@ -39,26 +39,13 @@ Each iteration of the loop pauses for 10 seconds after sending the message to Io
 This code was referenced/adapted from Avirup Basu, who made a detailed explanation via [YouTube](https://www.youtube.com/watch?v=JEffAb_3DlE) and [GitHub](https://github.com/avirup171/python-iot-hub-sender). What was added was reading frrom environment variables, our json output, and extra loops to handle the different endpoints.
 
 ### Azure IoT Hub Configuration:
-
-#### Screenshots:
-
-Creating the IoT hub and resource group, configuring name, region and Free tier (for cost friendly) with 8,000 daily message limit.
-![Creating IoT Hub](./screenshots/IoTHubScreenshot1.png)
-Configuring Network connectivity to be Public accesss.
-![Creating IoT Hub](./screenshots/IoTHubScreenshot2.png)
-Default settings, No device update and no windows Defender for IoT
-![Creating IoT Hub](./screenshots/IoTHubScreenshot3.png)
-Default settings, for Management of IoT Hub
-![Creating IoT Hub](./screenshots/IoTHubScreenshot5.png)
-Review of the creation of IoT Hub.
-![Creating IoT Hub](./screenshots/IoTHubScreenshot4.png)
+The Configurtion Steps for Iot Hub is to first 
 IoT Hub Overview.
 ![Creating IoT Hub](./screenshots/IoToverview.png)
 
 Creating an IoT hub Device This process is repeated two more times to create a total of three devices, one for each region
 ![Creating IoT Hub Device](./screenshots/CreatingIoTdevice.png)
-Result of three IoT devices
-![Creating IoT Hub Device](./screenshots/ListOfIoTDevices.png)
+
 IoT connection Strings this is later used within the .env file of the IoT simulation code to connect simulated devices to Azure IoT hub. The important connection used is the Primary Connection String.
 ![Creating IoT Hub Device](./screenshots/IOTConnectionString.png)
 
@@ -68,12 +55,6 @@ IoT connection Strings this is later used within the .env file of the IoT simula
 
 ### Azure Stream Analytics Job:
 
-Creating a New stream Analytics Job, We picked 1/3 in streaming units for cost effectiveness
-![Creating Stream Analytics Job](./screenshots/AnalyticsJobBasic.png)
-
-Connecting Stream Analytics Job to the appropriate storage blobstoragecan the creation of the storaage is shown in the Azure Blob Storage Section
-![Creating Stream Analytics Job](./screenshots/CreatingStreamAnalyticsJob.png)
-
 Review of Stream Analytics job Settings
 ![Creating Stream Analytics Job](./screenshots/StreamAnalyticsJobReview.png)
 
@@ -81,9 +62,6 @@ Here, the input is created we picked Messeging as the endpoint and JSON our inpu
 ![Creating Stream Analytics Job input](./screenshots/CreatingStreamInput.png)
 Here, the Output is created, Here it is linked to the storage container JSONstorage1, we picked this name originally since it stores JSON file format, but a more accurate name should have been IceWarningLogs, as later that container was used to store logs that the ice was not safe to skate on. The organization format is in array form as it is much easier to parse the information.
 ![Creating Stream Analytics Job Output](./screenshots/CreatingStreamOutput.png)
-Result of the Stream output/input creation:
-![Creating Stream Analytics Job Output](./screenshots/StreamOutputResult.png)
-![Creating Stream Analytics Job input](./screenshots/StreamInputResult.png)
 
 
 
@@ -129,6 +107,7 @@ Created Blob Storage container, default settings.
 
 ## Usage Instructions:
 
+### Running the IoT Sensor Simulation:
 Follow the following steps to set up and run the simulation for the three IoT devices:
 
 1. In the project root folder, create a `.env` file with the following fields:
@@ -141,19 +120,59 @@ Follow the following steps to set up and run the simulation for the three IoT de
 4. `pip install -r requirements.txt` to install the requirements (2).
 5. `py sensor-simulation/sensor.py` to run the program.
 
+### Configuring Azure Services:
 
-## Results:
+#### Creating Azure IoT Hub:
+The basic tab of IoT hub creation, picking free tier.
+![Creating IoT Hub](./screenshots/IoTHubScreenshot1.png)
+Picking public access networking
+![Creating IoT Hub](./screenshots/IoTHubScreenshot2.png)
+No defender or updates
+![Creating IoT Hub](./screenshots/IoTHubScreenshot3.png)
+Shared Access policy + RBAC
+![Creating IoT Hub](./screenshots/IoTHubScreenshot5.png)
+Review of IoT hub
+![Creating IoT Hub](./screenshots/IoTHubScreenshot4.png)
+]
+Creating an IoT hub Device This process is repeated two more times to create a total of three devices, one for each region
+![Creating IoT Hub Device](./screenshots/CreatingIoTdevice.png)
+Result of three IoT devices
+![Creating IoT Hub Device](./screenshots/ListOfIoTDevices.png)
+IoT connection Strings this is later used within the .env file of the IoT simulation code to connect simulated devices to Azure IoT hub. The important connection used is the Primary Connection String.
+![Creating IoT Hub Device](./screenshots/IOTConnectionString.png)
+
+#### Creating Azure Stream Analytics Job:
+
+Creating a New stream Analytics Job, We picked 1/3 in streaming units for cost effectiveness
+![Creating Stream Analytics Job](./screenshots/AnalyticsJobBasic.png)
+
+Connecting Stream Analytics Job to the appropriate storage blobstoragecan the creation of the storaage is shown in the Azure Blob Storage Section
+![Creating Stream Analytics Job](./screenshots/CreatingStreamAnalyticsJob.png)
+
+Here, the input is created we picked Messeging as the endpoint and JSON our input format since the simulation IoT devices output JSON
+![Creating Stream Analytics Job input](./screenshots/CreatingStreamInput.png)
+Here, the Output is created, Here it is linked to the storage container JSONstorage1, we picked this name originally since it stores JSON file format, but a more accurate name should have been IceWarningLogs, as later that container was used to store logs that the ice was not safe to skate on. The organization format is in array form as it is much easier to parse the information.
+![Creating Stream Analytics Job Output](./screenshots/CreatingStreamOutput.png)
+Result of the Stream output/input creation:
+![Creating Stream Analytics Job Output](./screenshots/StreamOutputResult.png)
+![Creating Stream Analytics Job input](./screenshots/StreamInputResult.png)
+
+### Accessing Stored Data:
 Before retrieving the results I had to create a diagnostic settings to Run the Stream analytics job:
 ![Creating Storage Account](./screenshots/AnalyzingStreammOverview.png)
-
-Starting the stream Jobs: 
-![Creating Storage Account](./screenshots/StartingAnalyzationStreamJob.png)
 
 After 10 seconds, the stream jobs output a JSON file to the jsonstorage container
 ![Creating Storage Account](./screenshots/StorageJSONFileOutput.png)
 
+
+## Results:
+
+Stream Analytics Recieving Simulated messages:
+![Simulated messages](./screenshots/StreamAnalyzeOverviewMessaging.png)
+
 Confirming that the data has been proccessed into an array format as JSON:
 ![Creating Storage Account](./screenshots/TheArrayFormatofJsonFileOutput.png)
+
 
 After the testing of the IoT devices and the assignment, we deleted our resources 
 ![Deletion of resources](./screenshots/DeletionOfResources.png)
