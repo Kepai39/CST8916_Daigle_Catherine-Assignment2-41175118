@@ -42,13 +42,13 @@ This code was referenced/adapted from Avirup Basu, who made a detailed explanati
 #### Screenshots:
 
 Creating the IoT hub and resource group, configuring name, region and Free tier (for cost friendly) with 8,000 daily message limit.
-![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot1.png)
+![Creating IoT Hub](./screenshots/IoTHubScreenshot1.png)
 Configuring Network connectivity to be Public accesss.
-![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot2.png)
+![Creating IoT Hub](./screenshots/IoTHubScreenshot2.png)
 Default settings, No device update and no windows Defender for IoT
-![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot3.png)
+![Creating IoT Hub](./screenshots/IoTHubScreenshot3.png)
 Review of the creation of IoT Hub.
-![Creating IoT Hub](https://github.com/Kepai39/CST8916_Daigle_Catherine-Assignment2-41175118/blob/main/screenshots/IoTHubScreenshot4.png)
+![Creating IoT Hub](./screenshots/IoTHubScreenshot4.png)
 
 
 
@@ -66,7 +66,7 @@ A basic query can be:
 SELECT * INTO [jsonstorage1] FROM [IoThubs1]
 ```
 
-Which shows us rows full of our sensor data, unfiltered.
+This shows us rows full of our sensor data, unfiltered.
 
 ![Analytics Stream Query](./screenshots/analytics-stream1.png)
 
