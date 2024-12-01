@@ -30,13 +30,15 @@ The main flow of the above app is in the `main` method. There is a `while` loop 
 
 ![Sensor Simulation Endpoints](./screenshots/sensor-simulation2.png)
 
-This .env file is part of a virtual environment where we define our environment variables. See the below screenshot for where we define our array with connection strings, and how we use the passed `data` and index (`conn`) to send the message.
+"The most important parameter of *[the Device on Iot Hub]* here, is the primary connection string." (Basu, 2023). A device can be 'named' and connection strings/keys generated through the IoT Hub in the Azure Portal. The generated primary connection string should be then added to an environment variable, or in the `.env` file as shown in the previous screenshot.
+
+This .env file is part of a virtual environment where we define our environment variables. See the below screenshot for where we define our array with the fetched environment variables (connection strings), and how we use the passed `data` and index (`conn`) to send the message.
 
 ![Sensor Simulation Code 1](./screenshots/sensor-simulation3.png)
 
-Each iteration of the loop pauses for 10 seconds after sending the message to IoT Hub. Further development of this program might consider externalizing the sleep/wait time to an environment variable for further configuration.
+Each iteration of the inner loop pauses for 10 seconds after sending a message to IoT Hub. Further development of this program might consider externalizing the sleep/wait time to an environment variable for further configuration.
 
-This code was referenced/adapted from Avirup Basu, who made a detailed explanation via [YouTube](https://www.youtube.com/watch?v=JEffAb_3DlE) and [GitHub](https://github.com/avirup171/python-iot-hub-sender). What was added was reading frrom environment variables, our json output, and extra loops to handle the different endpoints.
+
 
 ### Azure IoT Hub Configuration:
 The Configurtion Steps for Iot Hub is to first 
@@ -200,12 +202,7 @@ When we finally started the batch job to process the "data that indicates sub-pa
 In the end, it was a valuable experience with practical lessons to be learned.
 
 
-## Resources:
-
-**NOte: move this to references**
-
-- Avirup Basu. [Creating a sensor simulator to interact with IoT Hub, Video Tutorial, YouTube](https://www.youtube.com/watch?v=JEffAb_3DlE)
-- Vidiv Academy. [Azure IoT Hub with Stream Analytics, Video Tutorial, Youtube](https://www.youtube.com/watch?v=oxD6nEAUXuA)
-
-
 ## References:
+
+- Basu, A. (2023, August 31). Sending simulated data to IoT hub using Python. YouTube. https://www.youtube.com/watch?v=JEffAb_3DlE 
+- Vidiv Academy. (2023, December 26). Azure IoT Hub Project with Stream Analytics | Streaming Data Azure Data Engineering Project. https://www.youtube.com/watch?v=oxD6nEAUXuA
