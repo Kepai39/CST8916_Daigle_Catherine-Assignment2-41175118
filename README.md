@@ -37,7 +37,7 @@ This .env file is part of a virtual environment where we define our environment 
 This code was referenced/adapted from Avirup Basu, who made a detailed explanation via [YouTube](https://www.youtube.com/watch?v=JEffAb_3DlE) and [GitHub](https://github.com/avirup171/python-iot-hub-sender). What was added was reading frrom environment variables, our json output, and extra loops to handle the different endpoints.
 
 ### Azure IoT Hub Configuration:
-
+The Configurtion Steps for Iot Hub is to first 
 IoT Hub Overview.
 ![Creating IoT Hub](./screenshots/IoToverview.png)
 
@@ -111,11 +111,17 @@ Created Blob Storage container, default settings.
 ### Configuring Azure Services:
 
 #### Creating Azure IoT Hub:
-
-Review of the creation of IoT Hub.
+The basic tab of IoT hub creation, picking free tier.
+![Creating IoT Hub](./screenshots/IoTHubScreenshot1.png)
+Picking public access networking
+![Creating IoT Hub](./screenshots/IoTHubScreenshot2.png)
+No defender or updates
+![Creating IoT Hub](./screenshots/IoTHubScreenshot3.png)
+Shared Access policy + RBAC
+![Creating IoT Hub](./screenshots/IoTHubScreenshot5.png)
+Review of IoT hub
 ![Creating IoT Hub](./screenshots/IoTHubScreenshot4.png)
 ]
-
 Creating an IoT hub Device This process is repeated two more times to create a total of three devices, one for each region
 ![Creating IoT Hub Device](./screenshots/CreatingIoTdevice.png)
 Result of three IoT devices
