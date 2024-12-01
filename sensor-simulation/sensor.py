@@ -8,6 +8,7 @@ import json
 import asyncio
 import os
 
+# Sourced/Adapted from Avirup Basu, available on GitHub: https://github.com/avirup171/python-iot-hub-sender
 # Define connection string
 load_dotenv()
 connectionStrings = [os.getenv('IOTHUB_CONN_STR1'), os.getenv('IOTHUB_CONN_STR2'), os.getenv('IOTHUB_CONN_STR3')]
