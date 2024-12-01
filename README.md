@@ -27,7 +27,11 @@ The analysis and processing of this data and visualizing the data in an understa
 
 ![Sensor Simulation Output Screencap 1](screenshots/sensor-simulation1.png)
 
-The main flow of this app is in the `main` method. There is a `while` loop set to true, so that it continues to run indefinitely. Inside that loop is an array of locations. For each location in one iteration of the `while` loop, numbers are generated for our json variables
+The main flow of the above app is in the `main` method. There is a `while` loop set to true, so that it continues to run indefinitely. Inside that loop is an array of locations. For each location in one iteration of the `while` loop, numbers are generated for our json variables. The json and an index number is sent to the `endToIotHub()`, which handles sending of the data to the endpoints specified in the below:
+
+![Sensor Simulation Endpoints](./screenshots/sensor-simulation2.png)
+
+This .env file is part of a virtual environment where we define our environment variables.
 
 ### Azure IoT Hub Configuration:
 
@@ -61,6 +65,8 @@ SELECT * INTO [jsonstorage1] FROM [IoThubs1]
 Which shows us rows full of our sensor data, unfiltered.
 
 ![Analytics Stream Query](./screenshots/analytics-stream1.png)
+
+
 
 
 ### Azure Blob Storage:
