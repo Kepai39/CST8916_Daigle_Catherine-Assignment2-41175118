@@ -25,6 +25,10 @@ The analysis and processing of this data and visualizing the data in an understa
 
 ### IoT Sensor Simulation:
 
+![Sensor Simulation Output Screencap 1](screenshots/sensor-simulation1.png)
+
+The main flow of this app is in the `main` method. There is a `while` loop set to true, so that it continues to run indefinitely. Inside that loop is an array of locations. For each location in one iteration of the `while` loop, numbers are generated for our json variables
+
 ### Azure IoT Hub Configuration:
 
 #### Screenshots:
@@ -44,6 +48,19 @@ Review of the creation of IoT Hub.
 
 
 ### Azure Stream Analytics Job:
+
+
+Querying Azure Stream Analytics
+
+A basic query can be:
+
+```SQL
+SELECT * INTO [jsonstorage1] FROM [IoThubs1]
+```
+
+Which shows us rows full of our sensor data, unfiltered.
+
+![Analytics Stream Query](./screenshots/analytics-stream1.png)
 
 
 ### Azure Blob Storage:

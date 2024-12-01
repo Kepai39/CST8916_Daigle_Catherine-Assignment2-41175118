@@ -42,7 +42,7 @@ def main():
 
         for x in enumerate(locations):
             iceThickness = random.randrange(0, 10)
-            surfaceTemp = random.randrange(-20, 10)
+            surfaceTemp = random.randrange(-30, 10)
             snowAccumulation = random.randrange(0, 10)
             externalTemp = random.randrange(-30, 10)
             msgData={
