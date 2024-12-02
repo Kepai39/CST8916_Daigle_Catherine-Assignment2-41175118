@@ -38,17 +38,20 @@ This .env file is part of a virtual environment where we define our environment 
 
 Each iteration of the inner loop pauses for 10 seconds after sending a message to IoT Hub. Further development of this program might consider externalizing the sleep/wait time to an environment variable for further configuration.
 
+For The sensors the JSON payload is is seperated into ice thickness, surface temperature, snow accumulation, and external temperature.  we use data = json to send to IoT hub a JSON payload.  This data is sent however many times there are new locations as we treat each new location as a new device setup.
+![Sensor Simulation Code JSON](./screenshots/JsonPayload.png)
+
 
 
 ### Azure IoT Hub Configuration:
-The Configurtion Steps for Iot Hub is to first 
+The Configurtion Steps for Iot are demonstrated in screenshots below "Usage instructions" within "Creating IoT hub". For the configurations we chose to pick the most cost-effective options such as the free tier option.  For Networking, we picked a public network as using a private network although secure, can complicate the process.  
 IoT Hub Overview.
 ![Creating IoT Hub](./screenshots/IoToverview.png)
 
 Creating an IoT hub Device This process is repeated two more times to create a total of three devices, one for each region
 ![Creating IoT Hub Device](./screenshots/CreatingIoTdevice.png)
 
-IoT connection Strings this is later used within the .env file of the IoT simulation code to connect simulated devices to Azure IoT hub. The important connection used is the Primary Connection String.
+IoT connection Strings. These endpoints are used within the .env file of the IoT simulation code to connect simulated devices to Azure IoT hub. The important connection used is the Primary Connection String. Using the python code as before, after the connection is made, the messages are then routed to the IoT hub.
 ![Creating IoT Hub Device](./screenshots/IOTConnectionString.png)
 
 
@@ -60,11 +63,11 @@ IoT connection Strings this is later used within the .env file of the IoT simula
 Review of Stream Analytics job Settings
 ![Creating Stream Analytics Job](./screenshots/StreamAnalyticsJobReview.png)
 
-Here, the input is created we picked Messeging as the endpoint and JSON our input format since the simulation IoT devices output JSON
+Here, the input is created. We picked Messeging as the endpoint and JSON our input format since the simulation IoT devices output JSON. The source of the input is the IoT hub, therefore stream analytics retrieves and processes the data in IoT Hub.
 ![Creating Stream Analytics Job input](./screenshots/CreatingStreamInput.png)
-Here, the Output is created, Here it is linked to the storage container JSONstorage1, we picked this name originally since it stores JSON file format, but a more accurate name should have been IceWarningLogs, as later that container was used to store logs that the ice was not safe to skate on. The organization format is in array form as it is much easier to parse the information.
-![Creating Stream Analytics Job Output](./screenshots/CreatingStreamOutput.png)
 
+The Output is created, Here it is linked to the storage container JSONstorage1, we picked this name originally since it stores JSON file format, but a more accurate name should have been IceWarningLogs, as later that container was used to store logs that the ice was not safe to skate on. The organization format is in array form as it is much easier to parse the information.  
+![Creating Stream Analytics Job Output](./screenshots/CreatingStreamOutput.png)
 
 
 
@@ -81,7 +84,7 @@ This shows us rows full of our sensor data, unfiltered.
 ![Analytics Stream Query](./screenshots/analytics-stream1.png)
 
 
-Changing Analyzation screen query, this query specifies that only Unsafe ice conditions are logged and stored into the container.  unsafe conditions are as follows:  Ice thickness is < 5, Surface Temperature > 0, Snow Accumulation > 3, or External Temperature > 0.
+Changing Analyzation screen query, this query specifies that only Unsafe ice conditions are logged and stored into the container.  unsafe conditions are as follows:  Ice thickness is < 5, Surface Temperature > 0, Snow Accumulation > 3, or External Temperature > 0.  We chose > 0 degrees celsius as an unsafe condition for both temperature and surface temperature since ice melts above the freezing point.
 ![Creating Stream Analytics Job Query](./screenshots/AnalyzingStreamSQLQueryWarn.png)
 
 
@@ -100,12 +103,7 @@ Default Encryption settings
 Created Blob Storage container, default settings.
 ![Creating Storage Account](./screenshots/container-storage1.png)
 
-
-
-
-
-
-
+The storage is processed into a container storage as a JSON format in an array folder structure.  At the time, we chose the naming convention of the container that contains the processed data as jsonstorage1.  We chose this naming convention due to the fact that the container would be used to store JSON files only.  However, if a more appropriate name for the container would be "iceWarningLogs" since we have opted to have the container store log file data of times where the Canal Skateway is too dangerous for the public to skate on. 
 
 ## Usage Instructions:
 
@@ -129,10 +127,10 @@ The basic tab of IoT hub creation, picking free tier.
 ![Creating IoT Hub](./screenshots/IoTHubScreenshot1.png)
 Picking public access networking
 ![Creating IoT Hub](./screenshots/IoTHubScreenshot2.png)
-No defender or updates
-![Creating IoT Hub](./screenshots/IoTHubScreenshot3.png)
 Shared Access policy + RBAC
 ![Creating IoT Hub](./screenshots/IoTHubScreenshot5.png)
+No defender or updates
+![Creating IoT Hub](./screenshots/IoTHubScreenshot3.png)
 Review of IoT hub
 ![Creating IoT Hub](./screenshots/IoTHubScreenshot4.png)
 ]
@@ -140,8 +138,7 @@ Creating an IoT hub Device This process is repeated two more times to create a t
 ![Creating IoT Hub Device](./screenshots/CreatingIoTdevice.png)
 Result of three IoT devices
 ![Creating IoT Hub Device](./screenshots/ListOfIoTDevices.png)
-IoT connection Strings this is later used within the .env file of the IoT simulation code to connect simulated devices to Azure IoT hub. The important connection used is the Primary Connection String.
-![Creating IoT Hub Device](./screenshots/IOTConnectionString.png)
+
 
 #### Creating Azure Stream Analytics Job:
 
