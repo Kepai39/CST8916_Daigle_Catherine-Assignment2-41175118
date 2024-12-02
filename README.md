@@ -1,6 +1,7 @@
 # Assignment 2
 
 Catherine Daigle - 41175118
+Rae Ehret - 040907812
 
 
 
