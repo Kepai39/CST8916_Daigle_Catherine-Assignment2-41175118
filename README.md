@@ -1,6 +1,6 @@
 # CST8916 - Assignment 2
 
-| Name        | Student # |
+| Name             | Student # |
 | ---------------- | --------- |
 | Catherine Daigle | 41175118  |
 | Rae Ehret        | 040907812 |
