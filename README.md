@@ -16,6 +16,8 @@ The analysis and processing of this data and visualizing the data in an understa
 ## System Architecture Diagram:
 ![System architecture Diagram](RTAssignment2ArchitectureDiagram.drawio.png)
 
+The architecture diagram above is a fairly simple archetecture that shows the relationship of the IoT devices and the Azure Cloud services.  The IoT devices send their data via a connection string to IoT hub which is then sent to Azure Stream Analytics for processing.  When the data is finished processing it is then sent to Azure Blob storage where it is stored in containers.
+
 
 
 
